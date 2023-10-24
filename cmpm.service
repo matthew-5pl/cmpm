@@ -1,0 +1,33 @@
+# CMPM Discord Bot as a systemd service
+#################  WARNING: ################
+# 		This service is not complete!      #
+# 	It's a template you need to complete   #
+# 		 with info specific to you,        #
+# 	 the bot will not work if you don't!   #
+############################################
+
+[Unit]
+Description=CMPM Discord Bot
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+EnvironmentFile=/etc/cmpm/var_file
+Type=simple
+Restart=on-failure
+RestartSec=1
+RemainAfterExit=yes
+
+# Set the line below to use your username
+# User=YOUR_USER_HERE
+
+# I needed to do this to make env variables work, change these values accordingly
+# Environment="CMPM_TOK=YOUR_TOKEN_HERE"
+# Environment="CMPM_DLP=YOUR_AUDIO_DIRECTORY_HERE"
+
+# Change these to the directory you cloned the bot to
+# WorkingDirectory=YOUR_CMPM_DIRECTORY_HERE
+# ExecStart=sh YOUR_CMPM_DIRECTORY_HERE/run.sh
+
+[Install]
+WantedBy=multi-user.target
